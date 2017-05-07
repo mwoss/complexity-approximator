@@ -7,4 +7,4 @@ setup(name='complexity_timer',
       author_email='wos.mateusz16@gmail.com',
       license='MIT',
       packages=['complexity'],
-      install_requires=['stopit'])
+      install_requires=['stopit', 'sympy '])
