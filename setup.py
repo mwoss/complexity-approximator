@@ -6,4 +6,5 @@ setup(name='complexity_timer',
       author='mwoss',
       author_email='wos.mateusz16@gmail.com',
       license='MIT',
-      packages=['complexity'],)
+      packages=['complexity'],
+      install_requires=['stopit'])

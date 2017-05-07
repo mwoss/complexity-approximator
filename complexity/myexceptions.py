@@ -1,6 +1,10 @@
 class TimeException(Exception):
-    pass
+    def __init__(self, timeout):
+        self.time = timeout
+
+    def error_msg(self):
+        return "Timeout, it passed " + str(self.time)
 
 
-class NotEnoughArgumentException(Exception):
+class FewMeasurePointsException(Exception):
     pass
