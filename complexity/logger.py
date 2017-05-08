@@ -24,7 +24,6 @@ class Logger:
 
     def quit(self):
         logging.shutdown(self.handler)
-        return
 
     def log_msg(self, msg, level):
         log_level = logging.getLevelName(level)
