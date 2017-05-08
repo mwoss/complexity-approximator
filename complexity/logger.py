@@ -5,6 +5,7 @@ def log_fun(fun):
     def decor(*args):
         log_msg_dec('Calling function: ' + fun.__name__ + ' with args: ' + str(args))
         return fun(*args)
+
     return decor
 
 

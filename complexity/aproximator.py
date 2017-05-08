@@ -61,7 +61,7 @@ class ComplexityAndTime:
         min_index = result.index(min(result))
         self.single_elem_time = self.time_matrix[1][min_index]
         self.complexity = list(ComplexityFunctions.complexities.keys())[min_index]
-        self.logger.log_msg("\n\n\n", 'INFO')
+        self.logger.log_msg("\n", 'INFO')
         cleaning_function()
 
     def time_function(self, initialize_data, data_size, function):
@@ -99,6 +99,7 @@ class ComplexityAndTime:
                 print("Coulnd't gather enough data to approximate function \n"
                       "Probably function has not higher complexity than: " + self.complexity)
 
+    @complexity.logger.log_fun
     def time_for_data(self, initialize_data, size, function, cleaning_function):
         if self.complexity is None:
             self.approximation(function, initialize_data, cleaning_function)
@@ -106,10 +107,11 @@ class ComplexityAndTime:
             if self.single_elem_time == 0:
                 print("Time_for_data fun error. Couldnt't get sample due to timeout in approximation function\n")
                 return
-            print("Probably time for execute that algorithm for: " + str(size) + ' is ' +
+            print("Probably time for execute that algorithm for: " + str(size) + ' elements is ' +
                   str(self.single_elem_time * ComplexityFunctions.complexities.get(self.complexity)(size)) +
                   ' seconds.')
 
+    @complexity.logger.log_fun
     def max_size_pred(self, function, initialize_data, cleaning_function, time):
         if self.complexity is None:
             self.approximation(function, initialize_data, cleaning_function)
@@ -117,10 +119,11 @@ class ComplexityAndTime:
             if self.single_elem_time == 0:
                 print("Time_for_data fun error. Couldnt't get sample due to timeout in approximation function\n")
                 return
-            print("Probably size of problem for time: " + str(time) + ' is ' +
+            print("Probably size of problem for time: " + str(time) + 's is ' +
                   str(ComplexityFunctions.complexities.get(self.complexity)(int(time / self.single_elem_time))) +
                   ' elements.')
 
+    @complexity.logger.log_fun
     def all_in(self, function, initialize_data, cleaning_function, size, time):
         print("Starting all-in function!\n")
         self.approximation(function, initialize_data, cleaning_function)
