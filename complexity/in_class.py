@@ -22,19 +22,22 @@ if __name__ == "__main__":
             more = quicksort(more)
             return less + pivotlist + more
 
+
     def selection_sort(lst):
         for i, e in enumerate(lst):
             mn = min(range(i, len(lst)), key=lst.__getitem__)
             lst[i], lst[mn] = lst[mn], e
         return lst
 
+
     def initialize_data(n):
         return [randint(0, 10000) for i in range(n)]
+
 
     def cleanup():
         pass
 
 
     approximator = complexity.aproximator.ComplexityAndTime(30)
-    approximator.approximation(quicksort, initialize_data, cleanup)
-    print(approximator.get_complexity())
+    # approximator.approximation(quicksort, initialize_data, cleanup)
+    approximator.all_in(quicksort, initialize_data, cleanup, 100000, 3)

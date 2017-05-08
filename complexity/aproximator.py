@@ -107,7 +107,8 @@ class ComplexityAndTime:
                 print("Time_for_data fun error. Couldnt't get sample due to timeout in approximation function\n")
                 return
             print("Probably time for execute that algorithm for: " + str(size) + ' is ' +
-                  str(self.single_elem_time * ComplexityFunctions.complexities.get(self.complexity)(size)))
+                  str(self.single_elem_time * ComplexityFunctions.complexities.get(self.complexity)(size)) +
+                  ' seconds.')
 
     def max_size_pred(self, function, initialize_data, cleaning_function, time):
         if self.complexity is None:
@@ -117,7 +118,15 @@ class ComplexityAndTime:
                 print("Time_for_data fun error. Couldnt't get sample due to timeout in approximation function\n")
                 return
             print("Probably size of problem for time: " + str(time) + ' is ' +
-                  str(ComplexityFunctions.complexities.get(self.complexity)(int(time / self.single_elem_time))))
+                  str(ComplexityFunctions.complexities.get(self.complexity)(int(time / self.single_elem_time))) +
+                  ' elements.')
+
+    def all_in(self, function, initialize_data, cleaning_function, size, time):
+        print("Starting all-in function!\n")
+        self.approximation(function, initialize_data, cleaning_function)
+        self.time_for_data(initialize_data, size, function, cleaning_function)
+        self.max_size_pred(function, initialize_data, cleaning_function, time)
+        print(self.get_complexity())
 
 
 class ComplexityFunctions:
